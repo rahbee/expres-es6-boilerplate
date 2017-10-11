@@ -9,4 +9,11 @@ router.get('/', (req, res) => {
   });
 });
 
+/* GET another page. */
+router.get('/lol', (req, res) => {
+    res.render('index', {
+        title: 'LOL'
+    });
+});
+
 export default router;

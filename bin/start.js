@@ -2,6 +2,7 @@ import app from '../app';
 import Debug from 'debug';
 import http from 'http';
 import dotenv from 'dotenv';
+import mongoose from 'mongoose';
 
 /**
  * Normalize a port into a number, string, or false.
@@ -84,3 +85,10 @@ server.on('listening', () => {
     : `port ${addr.port}`;
   debug(`Listening on ${bind}`);
 });
+
+
+// Connect DB
+mongoose.connect(process.env.DBURI, { useMongoClient: true });
+mongoose.Promise = global.Promise;
+
+// Handle Exception
