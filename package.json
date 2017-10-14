@@ -27,6 +27,7 @@
     "babel-preset-env": "^1.6.0",
     "chai": "^4.1.1",
     "chai-http": "^3.0.0",
-    "eslint": "^4.8.0"
+    "eslint": "^4.8.0",
+    "nodemon": "^1.12.1"
   }
 }
