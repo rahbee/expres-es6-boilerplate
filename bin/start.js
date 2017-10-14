@@ -1,19 +1,10 @@
 import app from '../app';
 import Debug from 'debug';
 import http from 'http';
-import dotenv from 'dotenv';
+import {} from 'dotenv/config';
 import mongoose from 'mongoose';
 
-/**
- * Normalize a port into a number, string, or false.
- */
-
-
-dotenv.config(); // Initialize environment
 const debug = Debug(process.env.DEBUG);
-debug('booting...');
-
-console.log(process.env.DEBUG);
 
 const normalizePort = (val) => {
   const port = parseInt(val, 10);
