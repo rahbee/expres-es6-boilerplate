@@ -4,13 +4,12 @@
   "private": true,
   "main": "app.js",
   "scripts": {
-    "start": "nodemon ./bin/start --exec babel-node --presets env",
+    "start": "DEBUG=express-app nodemon ./bin/start --exec babel-node --presets env",
     "test": "mocha --recursive './test/*Test.js' --require babel-register"
   },
   "dependencies": {
     "body-parser": "^1.16.1",
     "cookie-parser": "^1.4.3",
-    "debug": "^3.0.0",
     "dotenv": "^4.0.0",
     "ejs": "^2.5.7",
     "express": "^4.15.4",
@@ -28,6 +27,7 @@
     "chai": "^4.1.1",
     "chai-http": "^3.0.0",
     "eslint": "^4.8.0",
+    "debug": "^3.0.0",
     "nodemon": "^1.12.1"
   }
 }

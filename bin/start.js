@@ -8,8 +8,12 @@ import mongoose from 'mongoose';
  * Normalize a port into a number, string, or false.
  */
 
-const debug = Debug('express-app:app');
+
 dotenv.config(); // Initialize environment
+const debug = Debug(process.env.DEBUG);
+debug('booting...');
+
+console.log(process.env.DEBUG);
 
 const normalizePort = (val) => {
   const port = parseInt(val, 10);
