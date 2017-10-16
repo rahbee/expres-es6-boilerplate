@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1><%= title %></h1>
+
+    <div class="login-form">
+      <form action="/signup" method="post">
+        <input type="text" name="email" placeholder="E-mail">
+        <input type="text" name="username" placeholder="Username">
+        <input type="password" name="password" placeholder="Password">
+        <input type="password" name="passwordConf" placeholder="Confirm Password">
+        <input type="submit" value="REGISTER">
+      </form>
+    </div>
+  </body>
+</html>

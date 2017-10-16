@@ -1,23 +1,30 @@
 import bodyParser from 'body-parser';
 import cookieParser from 'cookie-parser';
 import Debug from 'debug';
+import {} from 'dotenv/config';
 import express from 'express';
 import logger from 'morgan';
 import sassMiddleware from 'node-sass-middleware';
 import path from 'path';
+import session from 'express-session';
+import flash from 'express-flash';
+import expressValidator from 'express-validator';
+import connectMongo from 'connect-mongo';
 // import favicon from 'serve-favicon';
 
 import index from './routes/index';
 
+const debug = Debug(process.env.DEBUG);
+
 const app = express();
-const debug = Debug('express:app');
+const MongoStore = connectMongo(session);
+// const debug = Debug('express:app');
 app.set('views', path.join(__dirname, 'views'));
 
-debug('Sarting express-appppppp');
+// debug('Sarting express-appppppp');
 // view engine setup
 app.set('view engine', 'ejs');
-// uncomment after placing your favicon in /public
-// app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
@@ -25,6 +32,20 @@ app.use(bodyParser.urlencoded({
 }));
 
 app.use(cookieParser());
+app.use(expressValidator());
+app.use(flash());
+
+app.use(session({
+    resave: true,
+    saveUninitialized: true,
+    secret: process.env.SESSION_SECRET,
+    store: new MongoStore({
+        url: process.env.DBURI,
+        autoReconnect: true,
+        clear_interval: 3600
+    })
+}));
+
 app.use(sassMiddleware({
   src: path.join(__dirname, 'public'),
   dest: path.join(__dirname, 'public'),
