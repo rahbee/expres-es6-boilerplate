@@ -12,4 +12,10 @@ router.get('/signup', userController.getSignup);
 /* POST Signup page. */
 router.post('/signup', userController.postSignup);
 
+/* GET Login page. */
+router.get('/login', userController.getLogin);
+
+/* POST Login page. */
+router.post('/login', userController.postLogin);
+
 export default router;
